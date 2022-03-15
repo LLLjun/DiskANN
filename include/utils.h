@@ -70,7 +70,15 @@ namespace diskann {
     *ptr = nullptr;
     assert(IS_ALIGNED(size, align));
 #ifndef _WINDOWS
-    *ptr = ::aligned_alloc(align, size);
+    // *ptr = ::aligned_alloc(align, size);
+    size_t offset = align - 1 + sizeof(void*);
+    void * originalP = malloc(size + offset);
+    size_t originalLocation = reinterpret_cast<size_t>(originalP);
+    size_t realLocation = (originalLocation + offset) & ~(align - 1);
+    void * realP = reinterpret_cast<void*>(realLocation);
+    size_t originalPStorage = realLocation - sizeof(void*);
+    *reinterpret_cast<void**>(originalPStorage) = originalP;
+    *ptr = realP;
 #else
     *ptr = ::_aligned_malloc(size, align);  // note the swapped arguments!
 #endif
@@ -84,7 +92,9 @@ namespace diskann {
       return;
     }
 #ifndef _WINDOWS
-    free(ptr);
+    // free(ptr);
+    size_t originalPStorage = reinterpret_cast<size_t>(ptr) - sizeof(void*);
+    free(*reinterpret_cast<void**>(originalPStorage));
 #else
     ::_aligned_free(ptr);
 #endif

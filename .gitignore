@@ -356,3 +356,9 @@ MigrationBackup/
 /.vs
 /out/build/x64-Debug
 cscope*
+
+build/
+dataset
+Output/
+graphindex/
+.vscode/

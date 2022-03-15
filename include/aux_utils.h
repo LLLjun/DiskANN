@@ -32,10 +32,10 @@ typedef int FileHandle;
 #include "gperftools/malloc_extension.h"
 
 namespace diskann {
-  const size_t   TRAINING_SET_SIZE = 100000;
-  const double   SPACE_FOR_CACHED_NODES_IN_GB = 0.25;
-  const double   THRESHOLD_FOR_CACHING_IN_GB = 1.0;
-  const uint32_t NUM_NODES_TO_CACHE = 250000;
+  const size_t   TRAINING_SET_SIZE = 1000;
+  const double   SPACE_FOR_CACHED_NODES_IN_GB = 0.01;
+  const double   THRESHOLD_FOR_CACHING_IN_GB = 0.05;
+  const uint32_t NUM_NODES_TO_CACHE = 250;
   const uint32_t WARMUP_L = 20;
   const uint32_t NUM_KMEANS_REPS = 12;
 
