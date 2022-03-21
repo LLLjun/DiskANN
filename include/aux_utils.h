@@ -36,6 +36,10 @@ namespace diskann {
   const double   SPACE_FOR_CACHED_NODES_IN_GB = 0.01;
   const double   THRESHOLD_FOR_CACHING_IN_GB = 0.05;
   const uint32_t NUM_NODES_TO_CACHE = 250;
+  // const size_t   TRAINING_SET_SIZE = 10000;
+  // const double   SPACE_FOR_CACHED_NODES_IN_GB = 0.1;
+  // const double   THRESHOLD_FOR_CACHING_IN_GB = 0.5;
+  // const uint32_t NUM_NODES_TO_CACHE = 2500;
   const uint32_t WARMUP_L = 20;
   const uint32_t NUM_KMEANS_REPS = 12;
 

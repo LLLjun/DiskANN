@@ -1,8 +1,8 @@
 import os
 
-dataset = "deep"
-size_data = 1
-stage = "search"
+dataset = "turing"
+size_data = 10
+stage = "both"
 
 
 format = "float"
@@ -20,20 +20,18 @@ if dataset == "turing":
 
 R = 40
 L = 60
-B = 0.06
-M = 1
+B = 0.6
+M = 10
 T = 40
 
-num_nodes_to_cache = 2000
-num_threads = 1
+num_nodes_to_cache = 20000
+num_threads = 8
 beam_width = 4
 K = 10
 
 
 def main():
-    cmd_make = "cd build && /usr/bin/cmake -DCMAKE_BUILD_TYPE=Release .. && make -j"
-
-    cmd_build =  "./build/tests/build_disk_index " + \
+    cmd_build  =  "./build/tests/build_disk_index " + \
                 format + " l2 " + \
                 path_base + " " + \
                 path_index + " " + \
@@ -47,10 +45,9 @@ def main():
                 str(K) + " " + path_output + " " + \
                 "10 20 30 40 50 60 70 80 90 100"
 
-    os.system(cmd_make)
-    if stage == "build":
+    if stage == "build" or "both":
         os.system(cmd_build)
-    if stage == "search":
+    if stage == "search" or "both":
         os.system(cmd_search)
 
 
