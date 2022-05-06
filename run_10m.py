@@ -7,7 +7,7 @@ stage = "both"
 
 format = "float"
 
-path_dataset = "dataset/" + dataset
+path_dataset = "../dataset/" + dataset
 path_datasize = path_dataset + "/" + dataset + str(size_data) + "m"
 path_base = path_datasize + "/base." + str(size_data) + "m.fbin"
 path_gt = path_datasize + "/groundtruth." + str(size_data) + "m.bin"

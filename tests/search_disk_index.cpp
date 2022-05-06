@@ -299,19 +299,19 @@ int search_disk_index(int argc, char** argv) {
   }
 
   diskann::cout << "Done searching. Now saving results " << std::endl;
-  _u64 test_id = 0;
-  for (auto L : Lvec) {
-    std::string cur_result_path =
-        result_output_prefix + "_" + std::to_string(L) + "_idx_uint32.bin";
-    diskann::save_bin<_u32>(cur_result_path, query_result_ids[test_id].data(),
-                            query_num, recall_at);
+  // _u64 test_id = 0;
+  // for (auto L : Lvec) {
+  //   std::string cur_result_path =
+  //       result_output_prefix + "_" + std::to_string(L) + "_idx_uint32.bin";
+  //   diskann::save_bin<_u32>(cur_result_path, query_result_ids[test_id].data(),
+  //                           query_num, recall_at);
 
-    cur_result_path =
-        result_output_prefix + "_" + std::to_string(L) + "_dists_float.bin";
-    diskann::save_bin<float>(cur_result_path,
-                             query_result_dists[test_id++].data(), query_num,
-                             recall_at);
-  }
+  //   cur_result_path =
+  //       result_output_prefix + "_" + std::to_string(L) + "_dists_float.bin";
+  //   diskann::save_bin<float>(cur_result_path,
+  //                            query_result_dists[test_id++].data(), query_num,
+  //                            recall_at);
+  // }
   diskann::aligned_free(query);
   if (warmup != nullptr)
     diskann::aligned_free(warmup);

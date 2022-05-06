@@ -7,7 +7,7 @@ stage = "search"
 
 format = "float"
 
-path_dataset = "dataset/" + dataset
+path_dataset = "../dataset/" + dataset
 path_datasize = path_dataset + "/" + dataset + str(size_data) + "m"
 path_base = path_datasize + "/base." + str(size_data) + "m.fbin"
 path_gt = path_datasize + "/groundtruth." + str(size_data) + "m.bin"
@@ -25,7 +25,7 @@ M = 1
 T = 40
 
 num_nodes_to_cache = 2000
-num_threads = 1
+num_threads = 8
 beam_width = 4
 K = 10
 
